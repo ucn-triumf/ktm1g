@@ -1,0 +1,13 @@
+sed -e 's/PPCcodes/PPGcodes/g' fegrifdev-ip11 > ! tmp
+mv -f tmp fegrifdev-ip11
+sed -e 's/PPCcodes/PPGcodes/g' fegrifdev-ip10 > ! tmp
+mv -f tmp fegrifdev-ip10
+sed -e 's/PPCcodes/PPGcodes/g' fegrifdev-ip12 > ! tmp
+mv -f tmp fegrifdev-ip12
+chmod 755 fegrifdev-ip*
+sed -e 's/PPCcodes/PPGcodes/g' fegrifdev-2lev-ip7 > ! tmp
+mv -f tmp fegrifdev-2lev-ip7
+chmod 755 fegrifdev-2lev-ip7
+sed -e 's/PPCcodes/PPGcodes/g' fegrifdev-3lev > ! tmp
+mv -f tmp fegrifdev-3lev
+chmod 755 fegrifdev-3lev
