@@ -38,25 +38,13 @@ public:
 
     // Set up tabbed canvases
         
-    if(anaManager->HaveKTMHistograms()) 
-      AddSingleCanvas(new TFancyHistogramCanvas(anaManager->GetKTMHistograms(),"KTM"));
-    
     SetDisplayName(" KTM  Display");
   };
 
   virtual ~MyTestLoop() {};
 
   void BeginRun(int transition,int run,int time) {
-    std::cout << "User BOR method" << std::endl;
 
-    //Initialize .csv File for output
-    ofstream outfile;
-    outfile.open ("PulseDetails.csv");
-    outfile << "Timestamp, notchLength, fallTime, currentInNotch\n";
-
-    ofstream outfile2;
-    outfile2.open("PulseDetailsBoard.csv");
-    outfile2<< "Timestamp, TriggerOffset, meanOffset, highVoltage, lowVolate, measuredNotchWidth \n";
 
   }
 

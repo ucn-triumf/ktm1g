@@ -56,7 +56,6 @@ endif
 endif # MIDASSYS
 
 OBJS:=
-OBJS += TKTMHistogram.o 
 OBJS += TAnaManager.o
 
 all: $(OBJS) ana.exe rootana_webserver.exe anaDisplay.exe midas2root.exe
