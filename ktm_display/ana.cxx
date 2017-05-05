@@ -33,10 +33,8 @@ public:
 
   void Initialize(){
 
-#ifdef HAVE_THTTP_SERVER
     std::cout << "Using THttpServer in read/write mode" << std::endl;
     SetTHttpServerReadWrite();
-#endif
 
   }
 
