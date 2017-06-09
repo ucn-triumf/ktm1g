@@ -29,6 +29,8 @@ private:
   TH1D *f1VM4NotchWidth;
   TH1D *f1VM4FallTime;
   TH1D *f1VM4ArrivalTime;
+
+  TH1D *f1VM4NotchCurrent[6];
   TH1D *f1VM4NotchCleaniness;
   
 
