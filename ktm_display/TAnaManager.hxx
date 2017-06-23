@@ -4,7 +4,11 @@
 // Use this list here to decide which type of equipment to use.
 
 #include "TH1D.h"
+#include "TCanvas.h"
+#include "TLine.h"
+#include "TText.h"
 #include "TDataContainer.hxx"
+
 
 /// This is an example of how to organize a set of different histograms
 /// so that we can access the same information in a display or a batch
@@ -32,7 +36,12 @@ private:
 
   TH1D *f1VM4NotchCurrent[6];
   TH1D *f1VM4NotchCleaniness;
-  
+
+  TCanvas *c;  
+  TLine *rampUpLine;
+  TLine *rampDownLine; 
+  TText *kickerText;
+
 
 
 };

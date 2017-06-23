@@ -1,5 +1,6 @@
 #include "TAnaManager.hxx"
 #include "TV1720RawData.h"
+#include "TCanvas.h"
 
 #include <iostream>
 #include <fstream>
@@ -52,7 +53,19 @@ TAnaManager::TAnaManager(){
       //f1VM4NotchCleaniness = new TH1D("1VM4NotchCleaniness","1VM4 Notch Cleaniness",1000,0,20000);
       //f1VM4NotchCleaniness->SetXTitle("???");
 
+      c = new TCanvas("Calibrated1VM4WithMagnetRamp");;  
+      rampUpLine = new TLine(40,0,40,120);
+      rampUpLine->SetLineColor(2);
+      rampUpLine->SetLineStyle(2);
       
+      rampDownLine = new TLine(90,0,90,120);; 
+      rampDownLine->SetLineColor(2);
+      rampDownLine->SetLineStyle(2);
+
+      kickerText = new TText(41,1," <--   Kicker Ramp Period   --> ");
+      kickerText->SetTextColor(2);;
+      kickerText->SetTextSize(kickerText->GetTextSize()*0.9);;
+      kickerText->SetTextAngle(90);;
 
 };
 
@@ -104,11 +117,13 @@ int TAnaManager::ProcessMidasEvent(TDataContainer& dataContainer){
 
       //double calibrated_current = (avg - offset) * 0.00023116;
       //  New calibration, based on June 9 analysis
-      double calibrated_current = sqrt((avg*avg - 1.4746e7)/2.4156e7); 
-      if(time < 20){
-	std::cout << avg << " " << calibrated_current << std::endl;
+      double calibrated_current = 0.0;
+      if(avg*avg >= 1.4746e7)
+	calibrated_current = sqrt((avg*avg - 1.4746e7)/2.4156e7); 
+      //      if(time < 20){
+      //std::cout << avg << " " << calibrated_current << std::endl;
 
-      }
+      //      }
       f1VM4WaveformCorrected->SetBinContent((i+1.0)/4.0,calibrated_current);
 
 
@@ -119,7 +134,31 @@ int TAnaManager::ProcessMidasEvent(TDataContainer& dataContainer){
     
   }
 
+  // Plot the waveform in canvas, with lines marking magnet ramp period
+  c->cd();
+  c->Clear();
+  f1VM4WaveformCorrected->Draw();
 
+  c->Update();
+
+
+  double y1 = gPad->GetUymin();
+  double y2 = gPad->GetUymax();  
+
+
+
+  // Add text
+  kickerText->SetY((y2-y1)*0.6);
+  kickerText->Draw("SAME");
+
+  // Draw lines for ramp-period
+  rampUpLine->SetY1(y1);   rampUpLine->SetY2(y2);
+  rampDownLine->SetY1(y1);   rampDownLine->SetY2(y2);
+  rampUpLine->Draw("SAME");
+  rampDownLine->Draw("SAME");
+
+  c->Update();
+  
 
   // Now analyze the calibrated waveform
   
