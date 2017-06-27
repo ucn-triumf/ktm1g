@@ -64,7 +64,7 @@ TAnaManager::TAnaManager(){
 
       kickerText = new TText(41,1," <--   Kicker Ramp Period   --> ");
       kickerText->SetTextColor(2);;
-      kickerText->SetTextSize(kickerText->GetTextSize()*0.9);;
+      kickerText->SetTextSize(kickerText->GetTextSize()*0.6);;
       kickerText->SetTextAngle(90);;
 
 };
