@@ -62,7 +62,7 @@ TAnaManager::TAnaManager(){
       rampDownLine->SetLineColor(2);
       rampDownLine->SetLineStyle(2);
 
-      kickerText = new TText(41,1," <--   Kicker Ramp Period   --> ");
+      kickerText = new TText(41,1," <--   Kicker Ramp Interval   --> ");
       kickerText->SetTextColor(2);;
       kickerText->SetTextSize(kickerText->GetTextSize()*0.6);;
       kickerText->SetTextAngle(90);;
