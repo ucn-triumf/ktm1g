@@ -58,13 +58,16 @@ endif # MIDASSYS
 OBJS:=
 OBJS += TAnaManager.o
 
-all: $(OBJS) ana.exe rootana_webserver.exe anaDisplay.exe midas2root.exe
+all: $(OBJS) ana.exe rootana_webserver.exe anaDisplay.exe midas2root.exe file_writer.exe
 
 ana.exe: ana.cxx $(OBJS) 
 	$(CXX) -o $@ $(CXXFLAGS) $^ $(LIBS) $(ROOTGLIBS) -lm -lz -lpthread -lssl -lutil
 
 
 rootana_webserver.exe: rootana_webserver.cxx $(OBJS) 
+	$(CXX) -o $@ $(CXXFLAGS) $^ $(LIBS) $(ROOTGLIBS) -lm -lz -lpthread -lssl -lutil
+
+file_writer.exe: file_writer.cxx $(OBJS) 
 	$(CXX) -o $@ $(CXXFLAGS) $^ $(LIBS) $(ROOTGLIBS) -lm -lz -lpthread -lssl -lutil
 
 anaDisplay.exe: anaDisplay.cxx $(OBJS) 

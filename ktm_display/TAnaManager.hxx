@@ -22,6 +22,9 @@ public:
   /// Processes the midas event, fills histograms, etc.
   int ProcessMidasEvent(TDataContainer& dataContainer);
 
+  TH1D * GetRawWaveform(){return f1VM4Waveform;}
+  TH1D * GetCalibratedWaveform(){return f1VM4WaveformCorrected;};
+
 
 
 private:
