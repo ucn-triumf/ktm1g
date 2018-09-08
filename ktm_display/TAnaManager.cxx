@@ -117,13 +117,17 @@ int TAnaManager::ProcessMidasEvent(TDataContainer& dataContainer){
 
       //double calibrated_current = (avg - offset) * 0.00023116;
       //  New calibration, based on June 9 analysis
+      //double calibrated_current = 0.0;
+      //      if(avg*avg >= 1.4746e7)
+      //calibrated_current = sqrt((avg*avg - 1.4746e7)/2.4156e7); 
+      // New calibration, Sept 6, 2018 analysis
+      // Noise floor has increase from last year.
+      // Noise is now ~0.5uA big...
       double calibrated_current = 0.0;
-      if(avg*avg >= 1.4746e7)
-	calibrated_current = sqrt((avg*avg - 1.4746e7)/2.4156e7); 
-      //      if(time < 20){
-      //std::cout << avg << " " << calibrated_current << std::endl;
+      if(avg*avg >= 1.822e8)
+	calibrated_current = sqrt((avg*avg - 1.822e8)/2.4156e7); 
 
-      //      }
+
       f1VM4WaveformCorrected->SetBinContent((i+1.0)/4.0,calibrated_current);
 
 
