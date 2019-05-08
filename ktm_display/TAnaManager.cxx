@@ -123,9 +123,16 @@ int TAnaManager::ProcessMidasEvent(TDataContainer& dataContainer){
       // New calibration, Sept 6, 2018 analysis
       // Noise floor has increase from last year.
       // Noise is now ~0.5uA big...
+
+      // Recalibrate again May 8, 2019
+      // Trend of value for sample with beam off:
+      // 2017: 4000
+      // 2018-09: 13500
+      // 2019-05: 20600
+
       double calibrated_current = 0.0;
-      if(avg*avg >= 1.822e8)
-	calibrated_current = sqrt((avg*avg - 1.822e8)/2.4156e7); 
+      if(avg*avg >= 4.244e8)
+	calibrated_current = sqrt((avg*avg - 4.244e8)/2.4156e7); 
 
 
       f1VM4WaveformCorrected->SetBinContent((i+1.0)/4.0,calibrated_current);
